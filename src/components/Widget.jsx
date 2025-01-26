@@ -4,7 +4,11 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import tailwindStyles from "../index.css?inline";
 import supabase from "../supabaseClient";
 
@@ -26,7 +30,7 @@ export const Widget = ({ projectId }) => {
       p_message: form.feedback.value,
       p_rating: rating,
     };
-    const { data: returnedData, error } = await supabase.rpc("add_feedback", data);
+    const { data: returnedData } = await supabase.rpc("add_feedback", data);
     setSubmitted(true);
     console.log(returnedData);
   };
@@ -46,26 +50,22 @@ export const Widget = ({ projectId }) => {
             <style>{tailwindStyles}</style>
             {submitted ? (
               <div>
-                <h3 className="text-lg font-bold">Thank you for your feedback!</h3>
+                <h3 className="text-lg font-bold">
+                  Thank you for your feedback!
+                </h3>
                 <p className="mt-4">
-                  We appreciate your feedback. It helps us improve our product and provide better
-                  service to our customers.
+                  We appreciate your feedback. It helps us improve our product
+                  and provide better service to our customers.
                 </p>
               </div>
             ) : (
               <div>
                 <h3 className="text-lg font-bold">Send us your feedback</h3>
-                <form
-                  className="space-y-2"
-                  onSubmit={submit}
-                >
+                <form className="space-y-2" onSubmit={submit}>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name</Label>
-                      <Input
-                        id="name"
-                        placeholder="Enter your name"
-                      />
+                      <Input id="name" placeholder="Enter your name" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
@@ -90,7 +90,9 @@ export const Widget = ({ projectId }) => {
                         <StarIcon
                           key={index}
                           className={`h-5 w-5 cursor-pointer ${
-                            rating > index ? "fill-primary" : "fill-muted stroke-muted-foreground"
+                            rating > index
+                              ? "fill-primary"
+                              : "fill-muted stroke-muted-foreground"
                           }`}
                           onClick={() => onSelectStar(index)}
                         />
@@ -107,9 +109,10 @@ export const Widget = ({ projectId }) => {
               <a
                 href="https://nexx-saas.vercel.app/"
                 target="_blank"
+                rel="noreferrer"
                 className="text-indigo-600 hover:underline"
               >
-                Nexx ⚡️
+                Echo ⚡️
               </a>
             </div>
           </PopoverContent>
@@ -148,10 +151,10 @@ function MessageCircleIcon(props) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-message-circle"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="lucide lucide-message-circle"
     >
       <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
     </svg>
