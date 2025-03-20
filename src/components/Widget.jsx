@@ -107,7 +107,7 @@ export const Widget = ({ projectId }) => {
             <div className="text-gray-600">
               Powered by{" "}
               <a
-                href="https://nexx-saas.vercel.app/"
+                href="https://echo.sohamnandi.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-indigo-600 hover:underline"
